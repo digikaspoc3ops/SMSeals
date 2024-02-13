@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Share_verification_Teams</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share verification Teams</label>
+        <sharedTo>
+            <role>Verification_Team</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Approved by Verification Team</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingGuestRules>
+        <fullName>guest_user_rule</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>guest user rule</label>
+        <sharedTo>
+            <guestUser>SM_Seals</guestUser>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>New</value>
+        </criteriaItems>
+        <includeHVUOwnedRecords>false</includeHVUOwnedRecords>
+    </sharingGuestRules>
+</SharingRules>

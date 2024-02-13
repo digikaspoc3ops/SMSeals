@@ -1,0 +1,6 @@
+Hi {!Dealer__c.Name},<br/>
+<br/>
+Please Click on this link to verify your E-Mail address : {!Dealer__c.Verification_Link__c}<br/>
+<br/>
+Best regards,<br/>
+ SM SEALS

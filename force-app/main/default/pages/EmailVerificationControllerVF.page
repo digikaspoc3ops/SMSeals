@@ -1,0 +1,14 @@
+<apex:page controller="EmailVerificationController">
+    <apex:form >
+        <apex:pageMessages />
+        
+        <apex:outputPanel rendered="{!verificationResult != null}">
+            <p>{!verificationResult}</p>
+        </apex:outputPanel>
+        
+        <apex:outputPanel rendered="{!verificationResult == null}">
+            <p>Click the button below to verify your email address:</p>
+            <apex:commandButton action="{!verifyEmail}" value="Verify Email"/>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>
