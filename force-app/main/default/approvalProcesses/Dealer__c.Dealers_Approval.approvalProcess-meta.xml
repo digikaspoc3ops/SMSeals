@@ -11,6 +11,7 @@
         <field>LastName__c</field>
         <field>Email__c</field>
         <field>Phone_No__c</field>
+        <field>Verification_Status_of_Mail__c</field>
     </approvalPageFields>
     <approvalStep>
         <allowDelegate>false</allowDelegate>
@@ -20,7 +21,7 @@
                 <type>FieldUpdate</type>
             </action>
             <action>
-                <name>status_Approved_by_manager</name>
+                <name>update_status_Approved</name>
                 <type>FieldUpdate</type>
             </action>
         </approvalActions>
@@ -31,19 +32,11 @@
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
         </assignedApprover>
-        <entryCriteria>
-            <criteriaItems>
-                <field>Dealer__c.Status__c</field>
-                <operation>equals</operation>
-                <value>Awaiting</value>
-            </criteriaItems>
-        </entryCriteria>
-        <ifCriteriaNotMet>RejectRecord</ifCriteriaNotMet>
         <label>Dealer Manager Approval</label>
         <name>Dealer_Manager_Approval</name>
         <rejectionActions>
             <action>
-                <name>Dealer_Rejected</name>
+                <name>update_rejections</name>
                 <type>FieldUpdate</type>
             </action>
         </rejectionActions>
@@ -51,6 +44,11 @@
     <emailTemplate>unfiled$public/Dealer_Application_Is_successfully_submitted</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
+        <criteriaItems>
+            <field>Dealer__c.Verification_Status_of_Mail__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
         <criteriaItems>
             <field>Dealer__c.Status__c</field>
             <operation>equals</operation>
@@ -61,7 +59,7 @@
     <finalRejectionRecordLock>false</finalRejectionRecordLock>
     <initialSubmissionActions>
         <action>
-            <name>Status_Awaiting</name>
+            <name>status_update</name>
             <type>FieldUpdate</type>
         </action>
     </initialSubmissionActions>

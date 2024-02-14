@@ -1,26 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <name>Dealer_Email_Ver_Action</name>
-        <label>Dealer Email Ver Action</label>
+        <name>Dealer_Registration_Approval</name>
+        <label>Dealer Registration Approval</label>
         <locationX>176</locationX>
         <locationY>323</locationY>
-        <actionName>Dealer__c.Mail_Alert_on_New_Dealer_Creation_Email_Verification</actionName>
-        <actionType>emailAlert</actionType>
+        <actionName>submit</actionName>
+        <actionType>submit</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
-            <name>SObjectRowId</name>
+            <name>objectId</name>
             <value>
                 <elementReference>$Record.Id</elementReference>
             </value>
         </inputParameters>
-        <nameSegment>Dealer__c.Mail_Alert_on_New_Dealer_Creation_Email_Verification</nameSegment>
+        <inputParameters>
+            <name>comment</name>
+            <value>
+                <stringValue>Submitted through Flows</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>processDefinitionNameOrId</name>
+            <value>
+                <stringValue>Dealers_Approval</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>submit</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
         <versionSegment>1</versionSegment>
     </actionCalls>
-    <apiVersion>60.0</apiVersion>
+    <apiVersion>59.0</apiVersion>
     <environments>Default</environments>
-    <interviewLabel>Deal Mail Verification {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>Dealer verification mail</label>
+    <interviewLabel>DealerVerificationflow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>DealerVerificationflow</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -44,19 +57,11 @@
         <locationX>50</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Dealer_Email_Ver_Action</targetReference>
+            <targetReference>Dealer_Registration_Approval</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Status__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>New</stringValue>
-            </value>
-        </filters>
         <object>Dealer__c</object>
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
 </Flow>

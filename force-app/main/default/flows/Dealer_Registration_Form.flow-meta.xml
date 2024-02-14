@@ -82,6 +82,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Do_you_have_Godown__c</field>
+            <value>
+                <elementReference>Do_you_have_godown</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Email__c</field>
             <value>
                 <elementReference>Email.value</elementReference>
